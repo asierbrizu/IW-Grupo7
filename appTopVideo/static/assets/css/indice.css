@@ -1,138 +1,107 @@
-body {
-	background: rgba(29, 20, 35, 1);
-	font-family: 'Muli';
-	-webkit-font-smoothing: antialiased;
-}
-main {
-	padding: 60px 15px;
+  details {
+	margin: 40px;
+  }
+  summary {
+	writing-mode: vertical-lr;
 	text-align: center;
-	max-width: 100%;
-}
-h1 {
-	font-size: 2.5em;
-	font-weight: 300;
-	color: rgba(255, 255, 255, .9);
-	margin: 0 0 10px;
-}
-@media screen and (min-width: 600px) {
-	h1 {
-		font-size: 3em;
-   }
-}
-h2 {
-	margin: 0 0 50px;
-	font-size: 1.5em;
-	font-weight: 200;
-	color: rgba(255, 255, 255, .6);
-}
-aside {
-	position: fixed;
-	width: 100%;
-	height: 100%;
+	padding: 12px 10px;
+	width: 23px;
+	height: 17px;
+	background-color: var(--primColor);
+	border: 2px solid var(--secoColor);
+	border-radius: var(--cornerRad);
+	color: var(--secoColor);
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+	transition: transform 200ms ease-in-out 0s;
+  }
+  summary::before,
+  summary::after {
+	position: static;
 	top: 0;
 	left: 0;
-	background-color: rgba(52, 165, 142, 0.15);
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.5s ease;
-	z-index: 2;
-}
-.open {
-	opacity: 1;
-	visibility: visible;
-}
-nav {
-	text-align: center;
-	height: 95vh;
+  }
+  summary::before {
+	content: "";
+  }
+  summary::after {
+	content: "III";
+	letter-spacing: -1px;
+  }
+  summary:hover {
+	transform: scale(1.1);
+  }
+  summary::marker {
+	font-size: 0;
+  }
+  summary::-webkit-details-marker {
+	display: none;
+  }
+  details[open] .menu {
+	animation-name: menuAnim;
+  }
+  details[open] summary::before {
+	content: "X";
+  }
+  details[open] summary::after {
+	content: "";
+  }
+  .menu {
+	height: 0;
+	width: fit-content;
+	border-radius: var(--cornerRad);
+	background-color: var(--primColor);
+	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+	margin-top: 8px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-}
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-nav ul li {
-	align-items: center;
-	flex: 1;
-	line-height: 20vh;
-}
-nav ul li a {
-	font-size: 1.5em;
-	transition: all 0.5s ease;
-	display: block;
+	justify-content: space-between;
+	overflow: hidden;
+	animation: closeMenu 300ms ease-in-out forwards;
+  }
+  .menu a {
+	padding: 12px 24px;
+	margin: 0 16px;
+	color: var(--secoColor);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	text-decoration: none;
-	color: rgba(255, 255, 255, .5);
-}
-nav ul li a:hover {
-	color: rgba(255, 255, 255, .9);
-	transform: scale(1.1);
-}
-nav ul li a:hover:before {
-	visibility: visible;
-	transform: scaleX(1);
-}
-nav ul li a:before {
-	content: "";
+	text-align: center;
+	transition: filter 200ms linear 0s;
+  }
+  .menu a:nth-of-type(1) {
+	padding-top: 24px;
+  }
+  .menu a:nth-last-of-type(1) {
+	border-bottom: none;
+  }
+  .menu a:hover {
+	filter: brightness(200%);
+  }
+  details::before {
+	color: var(--secoColor);
 	position: absolute;
-	width: 50%;
-	height: 2px;
-	bottom: 0;
-	left: 25%;
-	background: white;
-	visibility: hidden;
-	transform: scaleX(0);
-	transition: all 0.3s ease-in-out 0s;
-}
-@media screen and (min-width: 600px) {
-	nav ul li a {
-		font-size: 3em;
-   }
-}
-button {
-	padding: 15px 40px;
-	background: transparent;
-	border: 1px solid rgba(255, 255, 255, .4);
-	color: white;
-	border-radius: 8px;
-	transition: all 0.5s ease;
-}
-button:hover {
-	border: 1px solid rgba(255, 255, 255, 1);
-}
-.close {
-	position: fixed;
-	top: 40px;
-	right: 60px;
-	color: white;
-	z-index: 3;
-	cursor: pointer;
-	font-family: sans-serif;
-}
-.close span, .close span:before, .close span:after {
-	border-radius: 4px;
-	height: 5px;
-	width: 35px;
-	background: white;
-	position: absolute;
-	display: block;
-	content: '';
-}
-.close span {
-	background: transparent;
-}
-.close span:before {
-	transform: rotate(45deg);
-}
-.close span:after {
-	transform: rotate(-45deg);
-}
-.outer-close {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 85px;
-	height: 85px;
-	cursor: pointer;
-}
+	margin-left: 80px;
+	padding: 10px 10px;
+	opacity: 0.4;
+  }
+  details[open]::before {
+	animation: fadeMe 300ms linear forwards;
+  }
+  @keyframes menuAnim {
+	0% {
+	  height: 0;
+	}
+	100% {
+	  height: 312px;
+	}
+  }
+  @keyframes fadeMe {
+	0% {
+	  opacity: 0.4;
+	}
+	100% {
+	  opacity: 0;
+	}
+  }
+  
