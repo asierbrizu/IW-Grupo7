@@ -1,3 +1,4 @@
+
   details {
 	margin: 40px;
   }
@@ -48,7 +49,7 @@
 	content: "";
   }
   .menu {
-	height: 0;
+	height: fit-content;
 	width: fit-content;
 	border-radius: var(--cornerRad);
 	background-color: var(--primColor);
@@ -56,9 +57,7 @@
 	margin-top: 8px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	overflow: hidden;
-	animation: closeMenu 300ms ease-in-out forwards;
   }
   .menu a {
 	padding: 12px 24px;
