@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block titulo %} 
+Categorias
+{% endblock %}
+
+{% block cabecera %}
+
+<h1>Lista de categorías</h1> 
+{% endblock %}
+
+{% block contenido %} 
+
+{% if lista_categorias %}
+<ul id="lista">
+{% for c in lista_categorias %}
+<li><a href="{% url 'categoria' c.nombre %}">{{c.nombre}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+    <p>Actualmente no hay categorías disponible.</p>
+{% endif %}
+{% endblock %}

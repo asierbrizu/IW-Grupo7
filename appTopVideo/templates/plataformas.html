@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block titulo %} 
+Plataformas
+{% endblock %}
+
+{% block cabecera %}
+
+<h1>Lista de plataformas</h1> 
+{% endblock %}
+
+{% block contenido %} 
+
+{% if lista_plataformas %}
+<ul id="lista">
+{% for p in lista_plataformas %}
+<li><a href="{% url 'plataforma' p.nombre %}">{{p.nombre}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+    <p>Actualmente no hay plataformas.</p>
+{% endif %}
+{% endblock %}

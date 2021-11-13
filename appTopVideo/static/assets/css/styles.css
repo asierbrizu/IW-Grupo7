@@ -1,3 +1,30 @@
+#lista li{
+    list-style: none;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+#lista li a{
+    float: left;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    margin: 5px;
+    font-size: 25px;
+}
+
+#lista li a:hover{
+    font-weight: normal;
+    color: darkgray;
+    border: 3px solid darkgray;
+    margin: 4px;
+}  
+
 body {
     color: #777;
 }

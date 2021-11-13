@@ -2,7 +2,7 @@
 
 
 {% block titulo %} 
-Lista de videos
+Videos
 {% endblock %}
 
 {% block cabecera %}
@@ -11,5 +11,14 @@ Lista de videos
 {% endblock %}
 
 {% block contenido %} 
-<p>Prueba videos</p>
+
+{% if lista_videos %}
+<ul id="lista">
+{% for v in lista_videos %}
+<li><a href="{% url 'video' v.identificador %}">{{v.nombre}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+    <p>Actualmente no hay ningún video disponible.</p>
+{% endif %}
 {% endblock %}
