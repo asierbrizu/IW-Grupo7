@@ -15,7 +15,7 @@ Videos
 {% if lista_videos %}
 <ul id="lista">
 {% for v in lista_videos %}
-<li><a href="{% url 'video' v.identificador %}">{{v.nombre}}</a></li>
+<li><a href="{% url 'video' v.id%}">{{v.nombre}}</a></li>
 {% endfor %}
 </ul>
 {% else %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %} 
+{{plataforma.nombre}}
+{% endblock %}
+
+{% block cabecera %}
+
+<h1>{{plataforma.nombre}}</h1> 
+{% endblock %}
+			
+{% block contenido %} 
+
+				<section class="info">
+			<div class="divInfo">
+				<img src="{% static 'images/thumbs/'|add:plataforma.imagen %}" alt="">
+				<div class="enCurso">
+					
+
+			            <div class="datos">
+						<span id="tituloDatos">Información de la plataforma</span>
+						<ul id=listaDatos>
+							<li>Nombre: {{plataforma.nombre}} </li>
+							<li>Empresa: {{plataforma.empresa}} </li>
+							
+
+
+						</ul>
+
+
+							<p>Videos: </p>
+
+                            {% if videos%}
+                                <ul id="listado">
+                                    {% for v in videos%}
+                                        <li><a href="{% url 'video' v.id%}">{{v.nombre}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>Actualmente esta plataforma no tiene videos.</p>
+                            {% endif %}
+                            
+					</div>
+				</div>
+			</div>
+		</section>
+	
+
+
+
+{% endblock %}

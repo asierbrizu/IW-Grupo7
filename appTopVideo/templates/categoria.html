@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titulo %} 
+{{categoria.nombre}}
+{% endblock %}
+
+{% block cabecera %}
+{% load static %}
+
+
+<h1>{{categoria.nombre}}</h1> 
+{% endblock %}
+			
+{% block contenido %} 
+
+				<section class="info">
+			<div class="divInfo">
+				
+				<div class="enCurso">
+					
+			            <div class="datos">
+						<span id="tituloDatos">Información de la categoria</span>
+						<ul id=listaDatos>
+							<li>Nombre: {{categoria.nombre}} </li>
+							<li>Descripcion: {{categoria.descripcion}} </li>
+							<li>Edad minima: {{categoria.edadMinima}} </li>
+
+
+						</ul>
+
+
+							<p>Videos: </p>
+
+                            {% if videos%}
+                                <ul id="listado">
+                                    {% for v in videos%}
+                                        <li><a href="{% url 'video' v.id%}">{{v.nombre}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>Actualmente esta categoria no tiene videos.</p>
+                            {% endif %}
+                            
+					</div>
+				</div>
+			</div>
+		</section>
+	
+
+
+
+{% endblock %}

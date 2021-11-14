@@ -15,7 +15,7 @@ Categorias
 {% if lista_categorias %}
 <ul id="lista">
 {% for c in lista_categorias %}
-<li><a href="{% url 'categoria' c.nombre %}">{{c.nombre}}</a></li>
+<li><a href="{% url 'categoria' c.id %}">{{c.nombre}}</a></li>
 {% endfor %}
 </ul>
 {% else %}

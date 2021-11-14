@@ -1,3 +1,51 @@
+
+.info{
+    padding: 3rem 0;
+    background-color: rgb(131, 205, 235);
+}
+.divInfo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.divInfo img{
+	width:50%;
+	
+}
+
+.enCurso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.datos{
+    display: flex;
+    flex-direction: column;
+	margin: 0 3rem;
+    padding: 2.75rem 2.25rem;
+
+    border-radius: 20px;
+    background-color: #f2f3ff;
+}
+
+#tituloDatos{
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    margin-bottom: 0.75rem;
+}
+
+#listaDatos{
+    display: flex;
+
+    flex-direction: column;
+}
+
+
 #lista li{
     list-style: none;
     margin: auto;
@@ -273,3 +321,4 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         left: 150px;
     }
 }
+

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %} 
+{{video.nombre}}
+{% endblock %}
+
+{% block cabecera %}
+
+<h1>{{video.nombre}}</h1> 
+{% endblock %}
+			
+{% block contenido %} 
+
+				<section class="info">
+			<div class="divInfo">
+				
+				<div class="enCurso">
+					<img src="{% static 'images/thumbs/'|add:video.miniatura %}" alt="">
+
+
+					<div class="datos">
+						<span id="tituloDatos">Información del vídeo</span>
+						<ul id=listaDatos>
+							<li>Nombre: {{video.nombre}} </li>
+							<li>Fecha: {{video.fecha}}</li>
+							<li>Descripción: {{video.descripcion}} </li>
+							<li>Duracion: {{video.duracion}} </li>
+							<li>Calidad: {{video.calidad}} </li>
+							<li>Categoría: {{video.categoria.nombre}} </li>
+							
+
+						</ul>
+							
+							<p>Plataformas: </p>
+							{% if plataformas %}
+                                <ul id="listado">
+                                    {% for p in plataformas %}
+                                        <li><a href="{% url 'plataforma' p.id %}">{{p.nombre}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>Actualmente no se encuentra en ninguna plataforma.</p>
+                            {% endif %}
+                            
+					</div>
+				</div>
+			</div>
+		</section>
+	
+
+
+
+{% endblock %}

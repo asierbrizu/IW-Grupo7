@@ -15,7 +15,7 @@ Plataformas
 {% if lista_plataformas %}
 <ul id="lista">
 {% for p in lista_plataformas %}
-<li><a href="{% url 'plataforma' p.nombre %}">{{p.nombre}}</a></li>
+<li><a href="{% url 'plataforma' p.id %}">{{p.nombre}}</a></li>
 {% endfor %}
 </ul>
 {% else %}
