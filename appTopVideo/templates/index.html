@@ -44,7 +44,7 @@
 						
 						<figure>
 			<div class="sliderPersonalizado">
-			  {% for video in videos %}
+			  {% for video in todos %}
 				<img class="imgSlider" src="{% static 'images/thumbs/'|add:video.miniatura %}" alt="{{video.nombre}}">
 			  {% endfor %}
 				<button id="anterior" class="botonSlider" onclick="plusDivs(-1)">&#10094;</button>

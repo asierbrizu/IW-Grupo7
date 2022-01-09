@@ -21,7 +21,7 @@ def index(request):
             video=v
     if video!=None:
         videos.append(video)        
-  context = {'videos': videos}
+  context = {'videos': videos, 'todos':todosVideos}
   
   return render(request, 'index.html', context)
 
