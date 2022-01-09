@@ -5,6 +5,27 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Plataforma, Categoria, Video
 
+
+
+def index(request):
+  categorias=get_list_or_404(Categoria)
+  todosVideos= get_list_or_404(Video.objects.order_by('fecha'))
+  videos=[]
+  
+  for c in categorias:
+    actual="1970-01-01"
+    video=None
+    for v in todosVideos:
+        if v.categoria.nombre==c.nombre and v.fecha.isoformat()>actual:
+            actual=v.fecha.isoformat()
+            video=v
+    if video!=None:
+        videos.append(video)        
+  context = {'videos': videos}
+  
+  return render(request, 'index.html', context)
+
+
 #Devuelve un listado de plataformas
 def plataformas(request):
   plataformas= get_list_or_404(Plataforma.objects.order_by('nombre'))
@@ -60,19 +81,5 @@ def video(request, idVideo):
   context = {'video': video, 'plataformas': seleccionados}
   return render(request, 'video.html', context)
 
-def index(request):
-  categorias=get_list_or_404(Categoria)
-  todosVideos= get_list_or_404(Video.objects.order_by('fecha'))
-  videos=[]
-  
-  for c in categorias:
-    actual="1970-01-01"
-    video=None
-    for v in todosVideos:
-        if v.categoria.nombre==c.nombre and v.fecha.isoformat()>actual:
-            actual=v.fecha.isoformat()
-            video=v
-    if video!=None:
-        videos.append(video)        
-  context = {'videos': videos}
-  return render(request, 'index.html', context)
+def contacto(request):
+  return render(request, 'contacto.html')

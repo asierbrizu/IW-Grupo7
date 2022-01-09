@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %} 
+Contacto
+{% endblock %}
+
+{% block cabecera %}
+
+<h1>Contacta con nosotros</h1> 
+{% endblock %}
+			
+{% block contenido %} 
+
+<form action="mailto:contacto@ceramicaespanola.com">
+				<fieldset>
+					<label for="nombre">Nombre: *</label>
+					<input type="text" name="nombre" id="nombre" placeholder="Introduce Nombre" size="30" autofocus required/><br/>
+					<label for="apellidos">Apellidos: *</label>
+					<input type="text" id="apellidos" name="apellidos" placeholder="Introduce Apellidos" size="30" required/><br/>
+					<label for="correo">Correo: *</label>
+					<input type="email" id="correo" name="correo" placeholder="Introduce Correo Electronico" size="30" required/><br/>
+					<label for="mensaje">Mensaje: *</label>
+					<textarea id="mensaje" name="mensaje" cols="100" rows="20" required></textarea>
+					<br/><br/>
+					<input type="submit" name="enviar" id="enviar" value="Enviar Mensaje"/>
+				</fieldset>
+			</form>
+
+{% endblock %}

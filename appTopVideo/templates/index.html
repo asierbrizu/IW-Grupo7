@@ -13,9 +13,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
 		<link rel="stylesheet" href="{% static 'assets/css/indice.css' %}" />
+		
 		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+		<script src="{% static 'assets/js/slider.js' %}"></script>
+		
+		
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="carga()">
 
 		<details>
 			<summary></summary>
@@ -32,16 +36,28 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html"><strong>Top Video</strong> by Grupo 7</a></h1>
+						<h1><a href="{% url 'contacto' %}"><strong>Top Video</strong> by Grupo 7</a></h1>
 					</header>
 
 				 <!--Main -->
 					<div id="main">
 						
+						<figure>
+			<div class="sliderPersonalizado">
+			  {% for video in videos %}
+				<img class="imgSlider" src="{% static 'images/thumbs/'|add:video.miniatura %}" alt="{{video.nombre}}">
+			  {% endfor %}
+				<button id="anterior" class="botonSlider" onclick="plusDivs(-1)">&#10094;</button>
+				<button id="siguiente" class="botonSlider" onclick="plusDivs(1)">&#10095;</button>
+				
+			</div>
+		</figure>
+		
+						
 						{% for video in videos %}
 						<a href="{% url 'video' video.id %}" class="image">
 							<article class="thumb">
-							<a href="{% url 'video' video.id %}" class="image"><img src="{% static 'images/thumbs/'|add:video.miniatura %}" alt="" /></a>
+							<a href="{% url 'video' video.id %}" class="image"><img src="{% static 'images/thumbs/'|add:video.miniatura %}" alt="{{video.nombre}}" /></a>
 							<h2>{{video.nombre}}</h2>
 							<p>{{video.descripcion}}</p>
 						</article>
@@ -107,6 +123,7 @@
 			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
 			<script src="{% static 'assets/js/util.js' %}"></script>
 			<script src="{% static 'assets/js/main.js' %}"></script>
+			
 
 	</body>
 </html>
